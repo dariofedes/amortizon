@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import { SingletonHooksContainer } from 'react-singleton-hook'
+import { NavigationContainer } from '@react-navigation/native';
+import { Header } from './src/Common';
+import { TabNavigator } from './src/Navigation';
+import colorPalette from './src/style/color-palette';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <SingletonHooksContainer />
+      <SafeAreaView style={app.safeAreaView}/>
+      <Header />
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const app = StyleSheet.create({
+  safeAreaView: {
+    flex: 0,
+    backgroundColor: colorPalette.primary
+  }
+})

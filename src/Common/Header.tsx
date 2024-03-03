@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
 import CartBadge from '../Cart/CartBadge'
 import colorPalette from '../style/color-palette'

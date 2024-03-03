@@ -1,3 +1,4 @@
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Products } from '../Product';
 import { Cart } from '../Cart';

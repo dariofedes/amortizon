@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import Text from './Text'
 import ExpoCheckbox from 'expo-checkbox';

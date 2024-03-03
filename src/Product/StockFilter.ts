@@ -1,11 +1,11 @@
 import Filter from "./Filter"
 
 export default class StockFilter extends Filter {
-  constructor(value) {
+  constructor(value: boolean) {
     super(value)
   }
 
-  getParam() {
+  getParam(): string {
     return this.value ? 'status=alive' : ''
   }
 }

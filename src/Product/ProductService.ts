@@ -1,17 +1,17 @@
+import Filter from './Filter'
 import Product from "./Product"
+import ProductRepository from './ProductRepository'
 import getProductRepositoryRest from "./ProductRepositoryRest"
 
 export class ProductService {
-  constructor(productRepository) {
+  productRepository: ProductRepository
+
+  constructor(productRepository: ProductRepository) {
     this.productRepository = productRepository
   }
 
-  async getProducts(page, filters) {
-    const { results, nextPage } = await this.productRepository.getAll(page, filters)
-
-    const products = results.map(result => new Product(result))
-
-    return { products, nextPage }
+  async getProducts(page: number, filters: Filter[]) {
+    return this.productRepository.getAll(page, filters)
   }
 }
 

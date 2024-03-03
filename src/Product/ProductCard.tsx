@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
 import { Text, Button } from '../Common'
 import DeliveryTimeService from './DeliveryTimeService'
@@ -5,7 +6,7 @@ import { useCart } from '../Cart'
 import colorPalette from '../style/color-palette'
 
 export default function ProductCard({ product }) {
-  const { getDeliveryTime } = DeliveryTimeService()
+  const deliveryTimeService = new DeliveryTimeService()
   const { addProductToCart, isProductInCart } = useCart()
 
   return (
@@ -17,7 +18,7 @@ export default function ProductCard({ product }) {
           <Text style={productCard.price}>{product.price}:$</Text>
           {
             product.hasStock
-            ? <Text style={productCard.deliveryInfo}>Delivery <Text style={productCard.deliveryDate}>{getDeliveryTime(product)}</Text></Text>
+            ? <Text style={productCard.deliveryInfo}>Delivery <Text style={productCard.deliveryDate}>{deliveryTimeService.getDeliveryTime(product)}</Text></Text>
             : <Text>Not available</Text>
           }
         </View>

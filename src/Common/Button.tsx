@@ -1,10 +1,11 @@
-import { TouchableOpacity, StyleSheet } from "react-native"
+import React from 'react'
+import { TouchableOpacity, StyleSheet, TouchableOpacityProps } from "react-native"
 import Text from './Text'
 import colorPalette from "../style/color-palette"
 
-export default function Button({ onPress, title, disabled, variant = 'primary', style, children }) {
+export default function Button({ onPress, title, disabled, variant = 'primary', style, children }: ButtonProps) {
   return (
-    <TouchableOpacity style={[button.container, button.container[variant], disabled && button.container.disabled]}
+    <TouchableOpacity style={[button.container, button.container[variant], disabled && button.container.disabled, style]}
       disabled={disabled}
       onPress={onPress}
     >
@@ -15,6 +16,11 @@ export default function Button({ onPress, title, disabled, variant = 'primary', 
       }
     </TouchableOpacity>
   )
+}
+
+interface ButtonProps extends TouchableOpacityProps {
+  title: string,
+  variant?: string
 }
 
 const button = StyleSheet.create({

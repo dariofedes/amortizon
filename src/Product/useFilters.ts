@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { singletonHook } from 'react-singleton-hook';
+import Filter from './Filter';
 import StockFilter from './StockFilter';
 
 export function useFilters() {
-  const [stockOnly, setStockOnly] = useState(false)
+  const [stockOnly, setStockOnly] = useState<boolean>(false)
 
-  function getFilters() {
-    const filters = []
+  function getFilters(): Filter[] {
+    const filters: Filter[] = []
 
     filters.push(new StockFilter(stockOnly))
 

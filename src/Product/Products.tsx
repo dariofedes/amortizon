@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Text, Checkbox } from '../Common'
 import useProducts from './useProducts'
@@ -5,27 +6,26 @@ import ProductsList from './ProductsList'
 import useFilters from './useFilters'
 
 export default function Products() {
-  const { isLoading, results, getNextPage } = useProducts
-()
+  const { isLoading, products, getNextPage } = useProducts()
   const { stockOnly, setStockOnly } = useFilters()
 
   return (
-    <View style={products.container}>
+    <View style={productsScreen.container}>
       {
         isLoading
         ? <Text>loading...</Text>
-        : <View style={products.products}>
-          <View style={products.filters}>
-            <Checkbox style={products.checkbox} label="On stock only" value={stockOnly} onPress={() => setStockOnly(prevStockOnly => !prevStockOnly)} />
+        : <View style={productsScreen.products}>
+          <View style={productsScreen.filters}>
+            <Checkbox style={productsScreen.checkbox} label="On stock only" value={stockOnly} onPress={() => setStockOnly(prevStockOnly => !prevStockOnly)} />
           </View>
-          <ProductsList results={results} getNextPage={getNextPage} />
+          <ProductsList products={products} getNextPage={getNextPage} />
         </View>
       }
     </View>
   )
 }
 
-const products = StyleSheet.create({
+const productsScreen = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -39,4 +39,8 @@ const products = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end'
   },
+
+  checkbox: {
+
+  }
 })

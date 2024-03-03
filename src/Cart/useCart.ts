@@ -1,25 +1,26 @@
 import { useState } from 'react'
 import { singletonHook } from 'react-singleton-hook';
 import CartProduct from './CartProduct';
+import Product from '../Product/Product';
 
 export function useCart() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState<CartProduct[]>([])
 
-  function addProductToCart(product) {
+  function addProductToCart(product: Product): void {
     const cartProduct = new CartProduct(product)
 
     setProducts(prevProducts => [...prevProducts, cartProduct])
   }
 
-  function removeProductFromCart(product) {
+  function removeProductFromCart(product: Product): void {
     setProducts(prevProducts => prevProducts.filter(prevProduct => prevProduct.id !== product.id))
   }
 
-  function isProductInCart(productId) {
+  function isProductInCart(productId: string): boolean {
     return products.some(product => product.id === productId)
   }
 
-  function addOne(product) {
+  function addOne(product: Product): void {
     const newProducts = products.map(prevProduct => {
       if(prevProduct.id === product.id) prevProduct.add()
 
@@ -29,7 +30,7 @@ export function useCart() {
     setProducts(newProducts)
   }
 
-  function removeOne(product) {
+  function removeOne(product: Product): void {
     const newProducts = products.map(prevProduct => {
       if(prevProduct.id === product.id) prevProduct.remove()
 
@@ -54,11 +55,11 @@ export function useCart() {
 const initialState = {
   products: [],
   count: 0,
-  addProductToCart: () => null,
-  removeProductFromCart: () => null,
-  isProductInCart: () => null,
-  addOne: () => null,
-  removeOne: () => null,
+  addProductToCart: (product: Product) => null,
+  removeProductFromCart: (product: Product) => null,
+  isProductInCart: (productId: string) => undefined,
+  addOne: (product: Product) => null,
+  removeOne: (product: Product) => null,
   total: 0,
 }
 

@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import getProductService from './ProductService'
 import useFilters from './useFilters'
+import Product from './Product'
 
 export default function useProducts() {
-  const [results, setResults] = useState([])
+  const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const { getFilters, stockOnly } = useFilters()
-  let nextPage = useRef(1)
+  let nextPage = useRef<number | null>(1)
 
   const productService = getProductService()
 
@@ -16,9 +17,9 @@ export default function useProducts() {
 
       nextPage.current = 1
       
-      const results = await getProductsPaginated()
+      const products = await getProductsPaginated()
       
-      setResults(results)
+      setProducts(products)
       setIsLoading(false)
     })();
   }, [stockOnly])
@@ -27,14 +28,14 @@ export default function useProducts() {
     if(nextPage.current) {
       const results = await getProductsPaginated()
 
-      setResults(prevResults => [...prevResults, ...results])
+      setProducts(prevResults => [...prevResults, ...results])
     }
   }
 
   async function getProductsPaginated() {
     const filters = getFilters()
 
-    const { nextPage: _nextPage, products } = await productService.getProducts(nextPage.current, filters)
+    const { nextPage: _nextPage, products } = await productService.getProducts(nextPage.current!, filters)
 
     nextPage.current = _nextPage
 
@@ -43,7 +44,7 @@ export default function useProducts() {
 
   return {
     isLoading,
-    results,
+    products,
     getNextPage,
   }
 }

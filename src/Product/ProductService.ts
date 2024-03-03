@@ -1,7 +1,6 @@
 import Filter from './Filter'
-import Product from "./Product"
 import ProductRepository from './ProductRepository'
-import getProductRepositoryRest from "./ProductRepositoryRest"
+import getRestProductRepository from "./RestProductRepository"
 
 export class ProductService {
   productRepository: ProductRepository
@@ -15,6 +14,6 @@ export class ProductService {
   }
 }
 
-const productRepositoryRest = getProductRepositoryRest()
+const restProductRepository = getRestProductRepository()
 
-export default () => new ProductService(productRepositoryRest)
+export default () => new ProductService(restProductRepository)

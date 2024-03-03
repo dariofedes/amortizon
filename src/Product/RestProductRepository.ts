@@ -1,23 +1,22 @@
-import axios from 'axios'
 import ProductRepository from "./ProductRepository";
 import Filter from './Filter';
 import ProductRepositoryResponse from './ProductRepositoryResponse';
 import Product from './Product';
+import HttpClient from '../Common/HttpClient';
+import AxiosHttpClient from '../Common/AxiosHttpClient';
 
-export class ProductRepositoryRest extends ProductRepository {
+export class RestProductRepository implements ProductRepository {
   baseUrl = 'https://rickandmortyapi.com/api/character/?name=morty'
   httpClient: any
 
-  constructor(httpClient) {
-    super()
-
+  constructor(httpClient: HttpClient) {
     this.httpClient = httpClient
   } 
 
   public async getAll(page: number, filters: Filter[]): Promise<ProductRepositoryResponse> {
     const filtersParams = this.getFiltersParams(filters)
 
-    const { data: { results, info:{ next } } } = await this.httpClient.get(`${this.baseUrl}&page=${page}${filtersParams}`)
+    const { results, info:{ next } } = await this.httpClient.get(`${this.baseUrl}&page=${page}${filtersParams}`)
     
     const products = results.map((result: any) => new Product(result))
     const nextPage = this.getPageFromUrl(next)
@@ -44,4 +43,5 @@ export class ProductRepositoryRest extends ProductRepository {
   }
 }
 
-export default () => new ProductRepositoryRest(axios)
+const axiosHttpClient = new AxiosHttpClient()
+export default () => new RestProductRepository(axiosHttpClient)

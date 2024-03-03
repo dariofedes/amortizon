@@ -5,7 +5,5 @@ export default abstract class Filter {
     this.value = value
   }
 
-  getParam(): string {
-    throw new Error('method not implemented')
-  }
+  abstract getParam(): string
 }

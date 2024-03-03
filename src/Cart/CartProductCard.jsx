@@ -1,6 +1,6 @@
-import { Text, View, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet } from 'react-native'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-import { Button } from '../Common'
+import { Text, Button } from '../Common'
 import useCart from './useCart'
 import colorPalette from '../style/color-palette'
 
@@ -21,15 +21,15 @@ export default function CartProductCard({ cartProduct }) {
           {
             cartProduct.quantity === 1
             ? <Button onPress={() => removeProductFromCart(cartProduct)}>
-              <MaterialIcons size={20} name="delete" />
+              <MaterialIcons size={20} name="delete" color={colorPalette.text} />
             </Button>
             : <Button onPress={() => removeOne(cartProduct)}>
-              <MaterialIcons size={20} name="remove-circle-outline" />
+              <MaterialIcons size={20} name="remove-circle-outline" color={colorPalette.text} />
             </Button>
           }
           <Text style={cartProductCard.quantity}>{cartProduct.quantity}</Text>
           <Button  onPress={() => addOne(cartProduct)}>
-            <MaterialIcons size={20} name="add-circle-outline" />
+            <MaterialIcons size={20} name="add-circle-outline" color={colorPalette.text} />
           </Button>
         </View>
         <Button title="Remove from cart" onPress={() => removeProductFromCart(cartProduct)} variant='secondary' />

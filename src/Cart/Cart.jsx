@@ -1,6 +1,6 @@
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Text } from '../Common'
 import useCart from "./useCart";
-import CartProductCard from './CartProductCard'
 import CartProductsList from "./CartProductsList";
 
 export default function Cart() {

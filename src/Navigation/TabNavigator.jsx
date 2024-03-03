@@ -19,16 +19,16 @@ export default function TabNavigator() {
           fontSize: 14,
         },
         tabBarStyle: {
-            paddingBottom: 0,
-            height: 62,
+            paddingBottom: 30,
+            height: 80,
             borderTopColor: colorPalette.border,
             borderTopWidth: 1
         },
         tabBarHideOnKeyboard: true
     }}
     >
-      <Tab.Screen name="Products" component={Products} options={{ tabBarIcon: ({focused}) => <FontAwesome name="th-list" size={20} color={focused ? 'black' : 'grey'} />  }} />
-      <Tab.Screen name="Cart" component={Cart} options={{ tabBarIcon: ({focused}) => <FontAwesome5 name="shopping-cart" size={20} color={focused ? 'black' : 'grey'} />  }} />
+      <Tab.Screen name="Products" component={Products} options={{ tabBarIcon: ({focused}) => <FontAwesome name="th-list" size={20} color={focused ? colorPalette.text : colorPalette.inactive} />  }} />
+      <Tab.Screen name="Cart" component={Cart} options={{ tabBarIcon: ({focused}) => <FontAwesome5 name="shopping-cart" size={20} color={focused ? colorPalette.text : colorPalette.inactive} />  }} />
     </Tab.Navigator>
   );
 }

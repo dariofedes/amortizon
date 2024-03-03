@@ -1,5 +1,5 @@
-import { Text, View, Image, StyleSheet } from 'react-native'
-import { Button } from '../Common'
+import { View, Image, StyleSheet } from 'react-native'
+import { Text, Button } from '../Common'
 import DeliveryTimeService from './DeliveryTimeService'
 import { useCart } from '../Cart'
 import colorPalette from '../style/color-palette'

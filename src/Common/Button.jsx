@@ -1,4 +1,5 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native"
+import { TouchableOpacity, StyleSheet } from "react-native"
+import Text from './Text'
 import colorPalette from "../style/color-palette"
 
 export default function Button({ onPress, title, disabled, variant = 'primary', style, children }) {
@@ -8,7 +9,7 @@ export default function Button({ onPress, title, disabled, variant = 'primary', 
       onPress={onPress}
     >
       {
-        children 
+        children
         ? children
         : <Text style={button.title}>{title}</Text>
       }
@@ -25,7 +26,7 @@ const button = StyleSheet.create({
     alignItems: 'center',
 
     disabled: {
-      backgroundColor: colorPalette.disabled
+      backgroundColor: colorPalette.inactive
     },
 
     primary: {
@@ -42,5 +43,6 @@ const button = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: '500',
+    color: colorPalette.text
   }
 })

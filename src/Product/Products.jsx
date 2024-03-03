@@ -1,5 +1,5 @@
-import { Text, View, StyleSheet } from 'react-native'
-import { Checkbox } from '../Common'
+import { View, StyleSheet } from 'react-native'
+import { Text, Checkbox } from '../Common'
 import useProducts from './useProducts'
 import ProductsList from './ProductsList'
 import useFilters from './useFilters'

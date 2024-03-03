@@ -3,5 +3,6 @@ export default {
   border: '#DDD',
   secondary: '#FFF',
   cta: '#f0e14a',
-  disabled: 'rgba(0, 0, 0, .1)'
+  inactive: '#AfAfAf',
+  text: "#252525",
 }

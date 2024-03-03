@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { Text, Button } from '../Common'

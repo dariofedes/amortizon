@@ -19,7 +19,7 @@ export default function Button({ onPress, title, disabled, variant = 'primary', 
 }
 
 interface ButtonProps extends TouchableOpacityProps {
-  title: string,
+  title?: string,
   variant?: string
 }
 

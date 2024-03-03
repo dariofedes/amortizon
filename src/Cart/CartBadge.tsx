@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 import { Text } from '../Common'
